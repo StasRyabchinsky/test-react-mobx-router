@@ -1,24 +1,42 @@
+import React from 'react';
+import { ReactDOM } from 'react';
+import {Route, Routes, Link} from 'react-router-dom'
+
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import { Layout } from './components/MainLayout';
+import { Homepage } from './pages/HomePage';
+import { Aboutpage } from './pages/Aboutpage';
+// import { Postspage } from './pages/Postspage';
+import { Profilepage } from './pages/Profilepage';
+import { Authpage } from './pages/Authpage';
+import { Contactpage } from './pages/Contactpage';
+import { SinglePostPage } from './pages/SinglePostPage';
+
+import { UserAuth } from './hoc/UserAuth';
+function App() {            
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/home" element={<Homepage />}/>
+        <Route path="/home/:id" element={
+          <UserAuth>
+            <SinglePostPage />
+          </UserAuth>
+        }/>
+        
+        <Route path="/profile"element={
+          <UserAuth>
+            <Profilepage />
+          </UserAuth>
+        }/>
+        <Route path="/auth"element={<Authpage />}/>
+        <Route path="/contact"element={<Contactpage />}/>
+        <Route path="/about"element={<Aboutpage />}/>
+
+      </Route>
+    </Routes>
   );
 }
 

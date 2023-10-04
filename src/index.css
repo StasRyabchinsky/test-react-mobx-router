@@ -32,9 +32,6 @@ body {
   font-size: 100%;
   line-height: 1;
   font-size: 14px;
- /* -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; */
 }
 input,
 button,
@@ -57,11 +54,6 @@ body{
 
   padding: 30px 0;
   background: #202b3b;
-
-  /* color: #fff; */
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  /* user-select: none; */
 }
 h2 {
   margin: 0 auto;
@@ -108,7 +100,6 @@ header {
   margin: 0 auto;
   max-width: 1200px;
   height: 80px;
-  /* padding: 0 130px; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -125,7 +116,6 @@ header {
 }
 .headerProfileImg {
   width: 50px;
-
 }
 .headerSearchInput {
   width: 400px;
@@ -157,7 +147,6 @@ header {
   border-radius: 15px;
   border: 1px solid #ffffff6a;
 }
-
 main {
   margin: 0 auto;
   max-width: 1200px;
@@ -165,10 +154,6 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: start;
-
-  /* border-bottom: 1px solid #fff;
-  border-image: radial-gradient(#fff, #202b3b);
-  border-image-slice: 1; */
 }
 .mainNavbar {
   width: 300px;
@@ -176,7 +161,6 @@ main {
   flex-shrink:0;
   display: flex;
   flex-direction: column;
-  /* align-items: baseline; */
 
   border-right: 1px solid ;
   border-image: radial-gradient(#fff, #202b3b);
@@ -203,24 +187,9 @@ main {
   text-decoration: none;
 }
 
-/* .arrowLink {
-  width: 10px;
-  margin-left: 5px;
-  margin-top: 5px;
-  transform: rotate(180deg);
-}
-.arrowLinkActive {
-  width: 10px;
-  margin-left: 5px;
-  margin-top: 5px;
-  transform: rotate(90deg);
-
-} */
-
 .active-link {
    color:#558ef7;
 }
-
 
 .mainContainer {
   position: relative;
@@ -231,15 +200,9 @@ main {
   font-weight: 300;
   line-height: 24px;
   color: white;
-
-
 }
 .postsContainer {
-  height: 335px;
-
-  /* border: 1px solid #558ef7; */
-
-  overflow-y: scroll;
+  height: 100%;
 }
 
 .postContainer {
@@ -251,7 +214,6 @@ main {
   border-radius: 15px;
   border: 1px solid #ffffff6a;
   text-decoration: none;
-
 }
 
 .mainPost {
@@ -287,32 +249,29 @@ main {
   right: 115px;
   background-color: inherit;
   transition: 0.5s;
-
 }
 .userInfoEdit:hover {
   transform: scale(1.2);
 }
 
 .userInfoImg {
-  width: 200px;
+  width: 150px;
+  border: 1px solid #ffffff6a;
 }
 .userInfoName {
   margin-top: 10px;
   display: flex;
   flex-direction: row;
-
 }
 
 .userInfoNameFirst {
   margin-left: 60px;
-
 }
 .userInfoNameFirst>h4 {
   color: rgba(255, 255, 255, 0.539);
 }
 .userInfoNameLast {
   margin-left: 60px;
-
 }
 .userInfoNameLast>h4 {
   color: rgba(255, 255, 255, 0.539);
@@ -321,9 +280,105 @@ main {
   margin-top: 15px;
   margin-left: 60px;
   color: rgba(255, 255, 255, 0.539);
-
 }
 .userInfoStatus > p {
   margin-left: 60px;
-
 }
+
+.paginateContainer {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.paginateLink {
+  width: 40px;
+  height: 40px;
+  color: #ffffff6a;
+  transition: 0.5s;
+  text-indent: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.paginateLink:nth-child() {
+  color: #fff;
+  border-bottom: 1px solid ;
+  border-image: radial-gradient(#fff, #202b3b);
+  border-image-slice: 1;
+}
+.paginateLink:hover {
+  border-bottom: 1px solid ;
+  border-image: radial-gradient(#fff, #202b3b);
+  border-image-slice: 1;
+}
+.activePaginateLink {
+  color: #fff;
+  border-bottom: 1px solid ;
+  border-image: radial-gradient(#fff, #202b3b);
+  border-image-slice: 1;
+}
+
+.form {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.inputContainer {
+  margin-top: 30px;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inputContainer>label {
+  font-size: 20px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+  color: white;
+}
+.inputContainer>input {
+  padding: 5px 1rem ;
+  width: 250px;
+  font-size: 18px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+  color: white;
+
+  background-color: inherit;
+
+  border-radius: 15px;
+  border: 1px solid #ffffff6a;
+}
+.buttonContainer {
+  width: 350px;
+  display: flex;
+  justify-content: center;
+}
+.buttonContainer>button {
+  margin-top: 30px;
+  
+  width: 80px;
+  height: 40px;
+  background-color: #558ef7;
+  text-decoration: none;
+  color: #ffffff6a;
+
+  border-radius: 15px;
+  border: 1px solid #ffffff6a;
+
+  transition: 0.5s;
+}
+.buttonContainer>button:focus {
+  color: #fff;
+}
+.buttonContainer>button:hover {
+  color: #fff;
+}
+

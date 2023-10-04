@@ -1,57 +1,20 @@
-import { action, makeAutoObservable, makeObservable, observable, runInAction } from "mobx";
-import { getPosts } from "../api/getPosts";
+import { makeAutoObservable} from "mobx";
+import { fetchPost, postCount } from "../api/getPosts";
 
-// export type PostList = {
-//     // id: number
-//     // title: string
-//     // body:string
-//     // userId?:any
-//     // tags?: any
-//     // reactions?: any
-//     limit?: number
-//     posts: [{
-//         id: number
-//         title: string
-//         body: string
-//         userId?:any
-//         tags?: any
-//         reactions?: any
-//     }]
-//     total?: number
-//     skip?: number
-// }
+function PostStore() {
 
-class PostsStore {
-    posts:[] = []
-    // posts: PostList[] = [];
-
-    constructor() {
-        makeAutoObservable(this);
-    };
-
-    getPostsAction = async () => {
-        try {
-            const res = await getPosts()
-            this.posts = res;
-            // runInAction(() => {
-            // })
-
-        } catch {
+    return makeAutoObservable({
+        posts:[],
+        postCount,
+        async getPostsAction(currentPage:number) {
+            try {
+                const res = await fetchPost(currentPage)
+                this.posts = res;
+            } catch {
+            }
         }
-    }
-    // async loadPosts() {
-    //     const posts = await getPosts();
-
-    //     this.posts = posts;
-    // }
-    // constructor() {
-    //     makeObservable(this, {
-    //         posts: observable,
-    //         loadPosts: action,
-    //     });
-    // }
+    });
 }
 
 
-
-export {PostsStore};
+export default PostStore;

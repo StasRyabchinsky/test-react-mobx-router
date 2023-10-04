@@ -1,11 +1,20 @@
 import { Link,NavLink, Outlet } from "react-router-dom";
 import headerProfileImg from "../assets/img/headerProfileImg.png"
+import { observer } from "mobx-react";
+import { useRootStore } from "../store/root-store-provider";
 
 let setActiveLink = ({isActive}) => isActive ? "mainNavbarLink active-link" : "mainNavbarLink"
-const Layout = () =>{
 
-    return(
-        <>
+const Layout = observer(() =>{
+  const {singInStore} = useRootStore();
+
+  const logout = () => {
+    singInStore.logout()
+  }
+  const LS = JSON.parse(localStorage.getItem("localStorage"))
+  const idLS = LS.id
+  return(
+    <>
       <header>
         <Link to="/profile" className="headerProfile">
             <img src={headerProfileImg} alt="profile" className="headerProfileImg"/>
@@ -14,25 +23,30 @@ const Layout = () =>{
             <input type="search" className="headerSearchInput"/>
         </form>
         <div className="headerButtonContainer">
-            <Link to="/auth" className="headerButton">
-                Sing in
-            </Link>
+          {
+            (!(singInStore.userData.id || idLS) && (
+              <Link to="/auth" className="headerButton">
+                  Sing in
+              </Link>)) 
+            || 
+            (idLS  && (
+            <Link className="headerButton" onClick={logout}>
+              Logout
+            </Link>))
+          }
         </div>
         
       </header>
       <main>
         <nav className="mainNavbar">
           <NavLink to="/home" className={setActiveLink}>Home</NavLink>
-          {/* <NavLink to="/posts" className={setActiveLink}>Posts</NavLink> */}
           <NavLink to="/about" className={setActiveLink}>About</NavLink>
           <NavLink to="/contact" className={setActiveLink}>Contact us</NavLink>
-
         </nav>
-        
         <Outlet />
-        
       </main>
     </>
     )
-}
+})
+
 export {Layout}

@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react"
-import { useParams, Link, useNavigate } from "react-router-dom"
-const SinglePostPage =() =>{
+import { useParams } from "react-router-dom";
+
+const SinglePostPage = () =>{
     const {id} = useParams(); 
-    const navigate = useNavigate()
     const [singlePost, setSinglePost] = useState(null);
-    
-    const goBack = () => navigate(-1);
+    const goBack = () => window.history.back();
 
     useEffect(() => {
         fetch(`https://dummyjson.com/posts/${id}`)

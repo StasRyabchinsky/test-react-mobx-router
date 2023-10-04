@@ -1,18 +1,16 @@
-const getPosts = async () => {
-    try {
-        const postss = await fetch('https://dummyjson.com/posts')
-                            .then(res => res.json())
-                            .then(data => {
-                                let i =data.posts
-                                // console.log(i,"data-posts")
-                                return (i)
+const postCount = 10;
 
-                            })
-        // return posts.json();
-        return postss
+const fetchPost = async (currentPage:number) => {
+    try {
+        const postList = await fetch(`https://dummyjson.com/posts?limit=${postCount}&skip=${(currentPage == 1) ? 0 : ((currentPage - 1 ) + "0")}&&select=id,title,body`)
+            .then(res => res.json())
+            .then(data => {
+                let i =data.posts
+                return (i)
+            })
+        return postList
     } catch (e) {
         console.error(e)
     }
 }
-console.log(getPosts())
-export {getPosts}
+export {fetchPost, postCount }

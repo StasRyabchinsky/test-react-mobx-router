@@ -15,9 +15,16 @@ import { SinglePostPage } from './pages/SinglePostPage';
 
 import { UserAuth } from './hoc/UserAuth';
 import { NotProtectedRoute  } from './hoc/NotProtectedRoute';
+import { useRootStore } from './store/root-store-provider';
 
+function App() {
+  const {singInStore} = useRootStore();
+  const sensetiveInfo = JSON.parse(localStorage.getItem("sensetiveInfo"))
 
-function App() {            
+  if((sensetiveInfo.username !== null) && (sensetiveInfo.password !== null)){
+      singInStore.getUserData(sensetiveInfo.username, sensetiveInfo.password)
+    }
+
   return (
       <Routes>
         <Route path="/" element={<Layout />}>

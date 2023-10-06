@@ -5,13 +5,11 @@ import { observer } from "mobx-react";
 const Profilepage =observer(() =>{
     const {singInStore, editUserDataStore} = useRootStore();
 
-    let LS = JSON.parse(localStorage.getItem('localStorage'))
-
-    const username = editUserDataStore.newUserData.username || LS.username || singInStore.userData.username;
-    const firstname = editUserDataStore.newUserData.firstName || LS.firstName || singInStore.userData.firstName;
-    const lastname = editUserDataStore.newUserData.lastName || LS.lastName || singInStore.userData.lastName;
-    const email = editUserDataStore.newUserData.email || LS.email || singInStore.userData.email;
-    const image = editUserDataStore.newUserData.image || LS.image || singInStore.userData.image;
+    const username = editUserDataStore.newUserData.username || singInStore.userData.username;
+    const firstname = editUserDataStore.newUserData.firstName || singInStore.userData.firstName;
+    const lastname = editUserDataStore.newUserData.lastName || singInStore.userData.lastName;
+    const email = editUserDataStore.newUserData.email || singInStore.userData.email;
+    const image = editUserDataStore.newUserData.image || singInStore.userData.image;
 
     return(
         <div className="mainContainer">

@@ -5,11 +5,8 @@ import { observer } from "mobx-react";
 const UserAuth = observer(({children}) => {
     const location = useLocation();
     const {singInStore} = useRootStore();
-  
-    const LS = JSON.parse(localStorage.getItem("localStorage"))
-    const idLS = LS.id
     
-    if(!(singInStore.userData.id || idLS)){
+    if(!(singInStore.userData.id )){
         singInStore.setPageToReturn(location.pathname)
         return <Navigate to="/auth" state={{from: location}} />
     }

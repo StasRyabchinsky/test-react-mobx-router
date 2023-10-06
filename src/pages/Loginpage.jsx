@@ -4,7 +4,6 @@ import { useRootStore } from "../store/root-store-provider";
 import { observer } from "mobx-react";
 
 const Loginpage = observer(() =>{
-
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const {singInStore} = useRootStore();
@@ -40,6 +39,7 @@ const Loginpage = observer(() =>{
                                 onClick={(e) => {
                                     e.preventDefault()
                                     singInStore.getUserData(username, password)
+                                    localStorage.setItem('sensetiveInfo', JSON.stringify({username, password}))
                                 }}
                         >Sing in</button>
                     </div>

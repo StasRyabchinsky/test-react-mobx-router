@@ -10,7 +10,6 @@ const singIn = async( username?:string, password?:string) => {
     })
     .then(res => res.json())
     .then(data => {
-          localStorage.setItem('localStorage', JSON.stringify(data))
           return data
     })
     return userData

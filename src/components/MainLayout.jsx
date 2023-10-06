@@ -11,8 +11,6 @@ const Layout = observer(() =>{
   const logout = () => {
     singInStore.logout()
   }
-  const LS = JSON.parse(localStorage.getItem("localStorage"))
-  const idLS = LS.id
   return(
     <>
       <header>
@@ -24,18 +22,17 @@ const Layout = observer(() =>{
         </form>
         <div className="headerButtonContainer">
           {
-            (!(singInStore.userData.id || idLS) && (
+            (!(singInStore.userData.id ) && (
               <Link to="/auth" className="headerButton">
                   Sing in
               </Link>)) 
             || 
-            (idLS  && (
+            (singInStore.userData.id && (
             <Link className="headerButton" onClick={logout}>
               Logout
             </Link>))
           }
         </div>
-        
       </header>
       <main>
         <nav className="mainNavbar">

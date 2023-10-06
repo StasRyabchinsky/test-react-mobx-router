@@ -7,7 +7,6 @@ const EditProfilepage =() =>{
     const {singInStore} = useRootStore();
     const {editUserDataStore} = useRootStore();
     const navigate = useNavigate()
-    const goBack = () => navigate(-1)
 
     const [editUsername, setEditUsername] = useState('')
     const [editFirstname, setEditFirstname] = useState('')
@@ -15,8 +14,6 @@ const EditProfilepage =() =>{
     const [editEmail, setEditEmail] = useState('')
     const [editImage, setEditImage] = useState('')
     const [editPassword, setEditPassword] = useState('')
-
-    let LS = JSON.parse(localStorage.getItem('localStorage'))
 
     const editProfile =(e) => {
         e.preventDefault()
@@ -34,7 +31,7 @@ const EditProfilepage =() =>{
     return(
         <div className="mainContainer">
             <h2>Edit profile</h2>
-            <button onClick={goBack} className="userInfoEdit">Back</button>
+            <button onClick={navigate("/profile")} className="userInfoEdit">Back</button>
             <div className="form">
                 <form >
                     <div className="inputContainer">
@@ -42,7 +39,7 @@ const EditProfilepage =() =>{
                         <input  type="text" 
                                 name="user-name" 
                                 tabIndex={1} 
-                                placeholder={singInStore.userData.username || LS.username}
+                                placeholder={singInStore.userData.username}
                                 value={editUsername} 
                                 onChange={(e) => setEditUsername(e.target.value)}
                         />
@@ -52,7 +49,7 @@ const EditProfilepage =() =>{
                         <input  type="text" 
                                 name="first-name" 
                                 tabIndex={2} 
-                                placeholder={singInStore.userData.firstName || LS.firstName}
+                                placeholder={singInStore.userData.firstName}
                                 value={editFirstname} 
                                 onChange={(e) => setEditFirstname(e.target.value)}
                         />
@@ -62,7 +59,7 @@ const EditProfilepage =() =>{
                         <input  type="text" 
                                 name="last-name" 
                                 tabIndex={3} 
-                                placeholder={singInStore.userData.lastName || LS.lastName}
+                                placeholder={singInStore.userData.lastName}
                                 value={editLastname} 
                                 onChange={(e) => setEditLastname(e.target.value)}
                         />
@@ -72,7 +69,7 @@ const EditProfilepage =() =>{
                         <input  type="email" 
                                 name="email" 
                                 tabIndex={4} 
-                                placeholder={singInStore.userData.email || LS.email}
+                                placeholder={singInStore.userData.email}
                                 value={editEmail} 
                                 onChange={(e) => setEditEmail(e.target.value)}
                         />
